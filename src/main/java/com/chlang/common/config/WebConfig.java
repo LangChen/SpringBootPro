@@ -3,8 +3,10 @@ package com.chlang.common.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.chlang.common.interceptor.PlatformInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 /**
  * 配置类
  */
+@Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
 
     /**
@@ -31,5 +34,12 @@ public class WebConfig extends WebMvcConfigurationSupport {
         converters.add(fastConverter);
         //5、追加默认转换器
         super.addDefaultHttpMessageConverters(converters);
+    }
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        super.addInterceptors(registry);
+        //添加拦截路径
+        registry.addInterceptor(new PlatformInterceptor()).addPathPatterns("/**");
     }
 }
