@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/java/com/chlang/mapper/EmployeesMapper.java
+/src/main/java/com/chlang/entity/Employees.java
+/src/main/java/com/chlang/controller/TestController.java
+/src/main/resources/mapper/EmployeesMapper.xml
