@@ -1,4 +1,4 @@
-package com.chlang.common.resp;
+package com.chlang.common.resp.common;
 
 import java.io.Serializable;
 

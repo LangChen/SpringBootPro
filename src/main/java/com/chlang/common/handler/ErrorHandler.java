@@ -1,8 +1,8 @@
 package com.chlang.common.handler;
 
 import com.chlang.common.exception.PlatfromException;
-import com.chlang.common.resp.ErrorCode;
-import com.chlang.common.resp.PlatformHttpResult;
+import com.chlang.common.resp.common.ErrorCode;
+import com.chlang.common.resp.common.PlatformHttpResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

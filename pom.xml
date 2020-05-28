@@ -56,12 +56,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- json -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.51</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -70,23 +64,24 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.4.0</version>
-				<configuration>
-					<configurationFile>
-						src/main/resources/mybatis-generator-config.xml
-					</configurationFile>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.47</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+			<!-- 需要时才开启 -->
+<!--			<plugin>-->
+<!--				<groupId>org.mybatis.generator</groupId>-->
+<!--				<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+<!--				<version>1.4.0</version>-->
+<!--				<configuration>-->
+<!--					<configurationFile>-->
+<!--						src/main/resources/mybatis-generator-config.xml-->
+<!--					</configurationFile>-->
+<!--				</configuration>-->
+<!--				<dependencies>-->
+<!--					<dependency>-->
+<!--						<groupId>mysql</groupId>-->
+<!--						<artifactId>mysql-connector-java</artifactId>-->
+<!--						<version>5.1.47</version>-->
+<!--					</dependency>-->
+<!--				</dependencies>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
