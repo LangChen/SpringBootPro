@@ -61,7 +61,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //添加拦截路径
-        registry.addInterceptor(new PlatformInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new PlatformInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/auth/login");
     }
 
     @Override
