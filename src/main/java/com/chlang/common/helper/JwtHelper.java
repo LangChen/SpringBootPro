@@ -42,8 +42,8 @@ public class JwtHelper {
         Map<String,Object> claims = new HashMap<>();
         claims.put("userAccount",userAccount);
         Date now = new Date();
-        //设置超时之间为
-        Date exp = new Date(now.getTime()+expiredTime);
+        //设置超时时间
+        Date exp = new Date(now.getTime()+expiredTime*1000);
 
         String token = Jwts.builder()
                 .setClaims(claims)

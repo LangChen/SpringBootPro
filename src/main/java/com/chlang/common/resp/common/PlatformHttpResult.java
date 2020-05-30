@@ -12,7 +12,7 @@ public class PlatformHttpResult implements Serializable {
 
     private Integer code;
     private String msg;
-    private Object obj;
+    private Object data;
 
     public PlatformHttpResult(){}
 
@@ -21,9 +21,9 @@ public class PlatformHttpResult implements Serializable {
         this.msg = msg;
     }
 
-    private PlatformHttpResult(Integer code, Object obj){
+    private PlatformHttpResult(Integer code, Object data){
         this.code = code;
-        this.obj = obj;
+        this.data = data;
     }
 
     /**
@@ -57,11 +57,11 @@ public class PlatformHttpResult implements Serializable {
 
     /**
      * 成功，对象
-     * @param obj
+     * @param data
      * @return
      */
-    public final static PlatformHttpResult successWithObj(Object obj){
-        return new PlatformHttpResult(SUCCESS_CODE,obj);
+    public final static PlatformHttpResult successWithObj(Object data){
+        return new PlatformHttpResult(SUCCESS_CODE,data);
     }
 
     public Integer getCode() {
@@ -80,11 +80,11 @@ public class PlatformHttpResult implements Serializable {
         this.msg = msg;
     }
 
-    public Object getObj() {
-        return obj;
+    public Object getData() {
+        return data;
     }
 
-    public void setObj(Object obj) {
-        this.obj = obj;
+    public void setData(Object data) {
+        this.data = data;
     }
 }
