@@ -1,8 +1,10 @@
 package com.chlang.controller;
 
+import com.chlang.common.annotation.ControllerWebLog;
 import com.chlang.common.helper.JwtHelper;
 import com.chlang.common.resp.common.ErrorCode;
 import com.chlang.common.resp.common.PlatformHttpResult;
+import com.chlang.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * TODO
+ * 用户认证接口
  *
  * @author chenlang
  * @date 2020/5/29 5:43 下午
@@ -23,24 +25,23 @@ import java.util.Map;
 public class AuthController {
 
     @Autowired
-    private JwtHelper jwtHelper;
+    private AuthService authService;
 
     /**
      * 用户登录
      * @param loginInfo
      * @return
      */
+    @ControllerWebLog(apiName = "auth/login")
     @PostMapping("/login")
     public PlatformHttpResult login(@RequestBody Map<String,Object> loginInfo){
         if (!loginInfo.containsKey("userAccount") || !loginInfo.containsKey("password")){
             return PlatformHttpResult.errorWithMsg(ErrorCode.UN_KNOW_ERROR,"参数出错");
         }
         String userAccount = loginInfo.get("userAccount").toString();
-        Map<String,Object> result = new HashMap<>();
-        String token = jwtHelper.createToken(userAccount);
-        result.put("token",token);
+        String password = loginInfo.get("password").toString();
 
-        return PlatformHttpResult.successWithObj(result);
+        return authService.commonUserLogin(userAccount,password);
     }
 
 }

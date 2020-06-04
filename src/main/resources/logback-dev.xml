@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- 级别从高到低 OFF 、 FATAL 、 ERROR 、 WARN 、 INFO 、 DEBUG 、 TRACE 、 ALL -->
 <configuration>
-    <!-- 日志最大的历史 30天 -->
     <property name="log.level" value="INFO"/>
 
     <!-- ConsoleAppender 控制台输出日志 -->

@@ -27,20 +27,20 @@ public class PlatformInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         logger.info("--------进入拦截器--------");
         Enumeration<String> headerNames = request.getHeaderNames();
-        while(headerNames.hasMoreElements()){
-            String headName = headerNames.nextElement();
-            logger.info(headName + ":" + request.getHeader(headName));
-        }
+//        while(headerNames.hasMoreElements()){
+//            String headName = headerNames.nextElement();
+//            logger.info(headName + ":" + request.getHeader(headName));
+//        }
 
-        String token = request.getHeader("Authorization");
+        String authHeader = request.getHeader("Authorization");
         //判断是否传入令牌
-        if(token == null){
+        if(authHeader == null || !authHeader.startsWith("Bearer ")){
             throw new PlatfromException(ErrorCode.TOKEN_FAILED_ERROR,"无效的令牌");
         }
-
+        //验证令牌是否合法
+        String token = authHeader.substring(7);
         BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
         JwtHelper jwtHelper = (JwtHelper) factory.getBean("jwtHelper");
-        //判断令牌是否合法
         Claims claims = jwtHelper.verifyToken(token);
 
         //从redis中获取用户信息

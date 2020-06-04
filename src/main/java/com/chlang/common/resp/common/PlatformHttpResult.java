@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class PlatformHttpResult implements Serializable {
     private static final long serialVersionUID = 1517968965755604156L;
 
-    private final static Integer SUCCESS_CODE = 0;
+    private final static Integer SUCCESS_CODE = 200;
 
     private Integer code;
     private String msg;
@@ -61,7 +61,11 @@ public class PlatformHttpResult implements Serializable {
      * @return
      */
     public final static PlatformHttpResult successWithObj(Object data){
-        return new PlatformHttpResult(SUCCESS_CODE,data);
+        PlatformHttpResult platformHttpResult = new PlatformHttpResult();
+        platformHttpResult.setCode(SUCCESS_CODE);
+        platformHttpResult.setMsg("Success");
+        platformHttpResult.setData(data);
+        return platformHttpResult;
     }
 
     public Integer getCode() {
